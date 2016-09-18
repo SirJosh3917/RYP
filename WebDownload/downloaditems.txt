@@ -4,4 +4,11 @@ Version Info
 Execute these files
 @RYP.exe
 
-RYP/bin/Debug/RYP.exe
+Download these files
+$RYP/bin/Debug/RYP.exe
+$RYP/bin/Debug/RYP.pdb
+$RYP/bin/Debug/RYP.exe.config
+$RYP/bin/Debug/MetroFramework.dll
+$RYP/bin/Debug/MetroFramework.Fonts.dll
+$RYPbin/bin/Debug/RYPbin.dll
+$RYPbin/bin/Debug/RYPbin.pdb
