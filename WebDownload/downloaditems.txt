@@ -1,0 +1,7 @@
+Version Info
+#RYP Version: 1.0.0.0
+
+Execute these files
+@RYP.exe
+
+RYP/bin/Debug/RYP.exe
