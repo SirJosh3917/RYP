@@ -26,7 +26,8 @@ namespace RYPbin
 			AccPassword = "",
 			AccLoc = "",
 			OldAccEmail = "",
-			OldAccPass = "";
+			OldAccPass = "",
+			CupcakePassword = "";
 
 		private SearchMethod AccSearchMethod;
 
@@ -34,7 +35,8 @@ namespace RYPbin
 			string email,
 			string password,
 			SearchMethod searchMethod,
-			string fileLocation
+			string fileLocation,
+			string cupcakePassword = ""
 			)
 		{
 			Email = email;
@@ -44,6 +46,11 @@ namespace RYPbin
 
 			OldAccEmail = email;
 			OldAccPass = password;
+
+			if(searchMethod == SearchMethod.CupCake)
+			{
+				CupcakePassword = cupcakePassword;
+			}
 		}
 
 		public string Email
@@ -128,14 +135,53 @@ namespace RYPbin
 			try
 			{
 				XmlDocument read = new XmlDocument();
-				if (SearchMethod == SearchMethod.EEditor ||
-					SearchMethod == SearchMethod.MRBot ||
-					SearchMethod == SearchMethod.IceBot)
+				if ((int)SearchMethod > 2)
 					read.Load(Location);
 				XmlNodeList nodes = null;
 
 				switch (SearchMethod)
 				{
+					case SearchMethod.CupCake:
+						if (Location.ToLower().EndsWith("settings.xml"))
+						{
+							if (read != null)
+							{
+								nodes = read.DocumentElement.SelectNodes(@"/Settings/Accounts/Account");
+
+								foreach (XmlNode i in nodes)
+								{
+									if (i.Name == "Account") //Make sure we're seeing some Acocunt nodes
+									{
+										string E = i.SelectSingleNode("Email").InnerText;
+										string P = i.SelectSingleNode("Password").InnerText;
+
+										if (E == OldAccEmail &&
+											P == CupcakePassword)
+										{
+											var securePassword = new System.Security.SecureString();
+
+											foreach (char c in Password)
+											{
+												securePassword.AppendChar(c);
+											}
+
+											//Set the email/password
+
+											i.SelectSingleNode("Email").InnerText = Email;
+
+											if (Password == "") //If we're deleting an account
+												i.SelectSingleNode("Password").InnerText = "";
+											else
+												i.SelectSingleNode("Password").InnerText = SecureIt.EncryptString(securePassword);
+
+											CupcakePassword = SecureIt.EncryptString(securePassword);
+										}
+									}
+								}
+								read.Save(Location);
+							}
+						}
+						break;
 					case SearchMethod.IceBot:
 						nodes = read.DocumentElement.SelectNodes(@"/configuration/userSettings/_x003F_1_x003F_._x003F_11_x003F_._x003F_13_x003F_/setting");
 
@@ -220,6 +266,7 @@ namespace RYPbin
 			}
 			catch(Exception m) //I would specify the types I'm catching, but I just need to know if it worked.
 			{
+				throw m;
 				string err = m.Message;
 				return false;
 			}

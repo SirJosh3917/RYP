@@ -32,7 +32,6 @@ namespace RYPLauncher
 
 			new Thread(delegate()
 			{
-
 				WebClient getFiles = new WebClient();
 				getFiles.Proxy = null;
 

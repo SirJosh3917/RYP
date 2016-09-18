@@ -1,5 +1,5 @@
 Version Info
-#RYP Version: 1.0.0.0
+#RYP Version: 1.0.0.1
 
 Execute these files
 @RYP.exe

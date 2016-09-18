@@ -55,6 +55,10 @@ namespace RYPbin
 			Dirs.Add(@"%localappdata%\_1_");
 			SearchMethods.Add(SearchMethod.IceBot);
 
+			//CupCake ( Kudos to proccessor for not storing passwords in plain text! )
+			Dirs.Add(@"%userprofile%\Documents\CupCake");
+			SearchMethods.Add(SearchMethod.CupCake);
+
 			foreach(string i in Dirs)
 			{
 				Directories_.Add(i);
@@ -78,6 +82,31 @@ namespace RYPbin
 
 			switch (s)
 			{
+				case SearchMethod.CupCake:
+					if (file.ToLower().EndsWith("settings.xml"))
+					{
+						if (read != null)
+						{
+							nodes = read.DocumentElement.SelectNodes(@"/Settings/Accounts/Account");
+
+							foreach (XmlNode i in nodes)
+							{
+								if (i.Name == "Account") //Make sure we're seeing some Acocunt nodes
+								{
+									//Get the email and password
+									string Email = i.SelectSingleNode("Email").InnerText;
+									string Password = i.SelectSingleNode("Password").InnerText;
+
+									//Decrypt the password
+
+									Password = RYPbin.SecureIt.DecryptString(Password).ToInsecureString();
+
+									ret.Add(new Account(Email, Password, s, file, i.SelectSingleNode("Password").InnerText));
+								}
+							}
+						}
+					}
+					break;
 				case SearchMethod.IceBot:
 				case SearchMethod.EEditor:
 				case SearchMethod.MRBot:

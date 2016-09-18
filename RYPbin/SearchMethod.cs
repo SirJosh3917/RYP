@@ -26,6 +26,7 @@ namespace RYPbin
 		NinjaBot2 = 2,
 		EEditor = 3,
 		MRBot = 4,
-		IceBot = 5
+		IceBot = 5,
+		CupCake = 6
 	}
 }

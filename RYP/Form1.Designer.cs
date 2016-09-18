@@ -52,12 +52,14 @@ namespace RYP
 			this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
 			this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
 			this.passScan = new MetroFramework.Controls.MetroButton();
+			this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
 			this.metroPanel1.SuspendLayout();
 			this.metroPanel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// metroPanel1
 			// 
+			this.metroPanel1.Controls.Add(this.metroLabel3);
 			this.metroPanel1.Controls.Add(this.metroPanel2);
 			this.metroPanel1.Controls.Add(this.AccsFound);
 			this.metroPanel1.Controls.Add(this.metroLabel2);
@@ -69,7 +71,7 @@ namespace RYP
 			this.metroPanel1.HorizontalScrollbarSize = 10;
 			this.metroPanel1.Location = new System.Drawing.Point(0, 0);
 			this.metroPanel1.Name = "metroPanel1";
-			this.metroPanel1.Size = new System.Drawing.Size(609, 391);
+			this.metroPanel1.Size = new System.Drawing.Size(609, 422);
 			this.metroPanel1.TabIndex = 0;
 			this.metroPanel1.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.metroPanel1.VerticalScrollbarBarColor = true;
@@ -175,7 +177,7 @@ namespace RYP
 			this.metroLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.metroLabel2.AutoSize = true;
-			this.metroLabel2.Location = new System.Drawing.Point(131, 363);
+			this.metroLabel2.Location = new System.Drawing.Point(131, 366);
 			this.metroLabel2.Name = "metroLabel2";
 			this.metroLabel2.Size = new System.Drawing.Size(48, 19);
 			this.metroLabel2.TabIndex = 9;
@@ -187,7 +189,7 @@ namespace RYP
 			this.metroLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.metroLabel1.AutoSize = true;
-			this.metroLabel1.Location = new System.Drawing.Point(436, 363);
+			this.metroLabel1.Location = new System.Drawing.Point(436, 368);
 			this.metroLabel1.Name = "metroLabel1";
 			this.metroLabel1.Size = new System.Drawing.Size(31, 19);
 			this.metroLabel1.TabIndex = 8;
@@ -206,16 +208,27 @@ namespace RYP
 			this.passScan.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.passScan.Click += new System.EventHandler(this.passScan_Click);
 			// 
+			// metroLabel3
+			// 
+			this.metroLabel3.AutoSize = true;
+			this.metroLabel3.Location = new System.Drawing.Point(47, 388);
+			this.metroLabel3.Name = "metroLabel3";
+			this.metroLabel3.Size = new System.Drawing.Size(528, 19);
+			this.metroLabel3.TabIndex = 11;
+			this.metroLabel3.Text = "Update 1.0.0.1 : Now can read CupCake passwords. So much for not storing in plain" +
+    " text!";
+			this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
+			// 
 			// RypWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(35)))));
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-			this.ClientSize = new System.Drawing.Size(609, 391);
+			this.ClientSize = new System.Drawing.Size(609, 422);
 			this.Controls.Add(this.metroPanel1);
-			this.MaximumSize = new System.Drawing.Size(617, 418);
-			this.MinimumSize = new System.Drawing.Size(617, 418);
+			this.MaximumSize = new System.Drawing.Size(617, 449);
+			this.MinimumSize = new System.Drawing.Size(617, 449);
 			this.Name = "RypWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "RYP 1.0.0.0";
@@ -240,6 +253,7 @@ namespace RYP
 		private MetroFramework.Controls.MetroTextBox guiPass;
 		private MetroFramework.Controls.MetroTextBox guiEmail;
 		private MetroFramework.Controls.MetroTextBox guiFileLocation;
+		private MetroFramework.Controls.MetroLabel metroLabel3;
 
 	}
 }
