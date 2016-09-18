@@ -46,6 +46,11 @@ namespace RYPLauncher
 							FileName = FileName.Split('/')[FileName.Split('/').Length - 1];
 						}
 
+						if(!System.IO.Directory.Exists(@"DOWNLOADS"))
+						{
+							System.IO.Directory.CreateDirectory(@"DOWNLOADS");
+						}
+
 						if (System.IO.File.Exists(@"DOWNLOADS\" + FileName))
 						{
 						redo:
@@ -59,7 +64,7 @@ namespace RYPLauncher
 							}
 						}
 
-						getFiles.DownloadFile(@"https://raw.githubusercontent.com/SirJosh3917/RYP/master/" + i, @"DOWNLOADS\" + FileName);
+						getFiles.DownloadFile(@"https://raw.githubusercontent.com/SirJosh3917/RYP/master/" + i.Substring(1), @"DOWNLOADS\" + FileName);
 					}
 					else if (i.StartsWith(@"#"))// Check if it's a version info
 					{
