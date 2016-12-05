@@ -1,4 +1,4 @@
-﻿/*
+/*
 The MIT License (MIT)
 
 Copyright (c) 2016 SirJosh3917
@@ -84,18 +84,16 @@ namespace RYPbin
 		public static List<string> GetFiles(string DirectoryFind)
 		{
 			List<string> ret = new List<string>();
-
-			foreach (string i in Directory.GetDirectories(@DirectoryFind))
-			{
-				foreach (string n in GetFiles(i))
-				{
-					ret.Add(n);
+			if( Directory.Exists( DirectoryFind ) ) {
+				foreach( string i in Directory.GetDirectories( @DirectoryFind ) ) {
+					foreach( string n in GetFiles( i ) ) {
+						ret.Add( n );
+					}
 				}
-			}
 
-			foreach (string i in Directory.GetFiles(@DirectoryFind))
-			{
-				ret.Add(i);
+				foreach( string i in Directory.GetFiles( @DirectoryFind ) ) {
+					ret.Add( i );
+				}
 			}
 
 			return ret;
