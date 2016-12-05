@@ -1,4 +1,4 @@
-﻿/*
+/*
 The MIT License (MIT)
 
 Copyright (c) 2016 SirJosh3917
@@ -145,6 +145,12 @@ namespace RYPbin
 					ret.Add(tmp.Clone());
 					break;
 				case SearchMethod.NinjaBot:
+					if(!System.IO.File.Exists(Environment.ExpandEnvironmentVariables(@"%localappdata%\Ninjabot\accemails.txt")))
+						break;
+
+					if( !System.IO.File.Exists( Environment.ExpandEnvironmentVariables( @"%localappdata%\Ninjabot\accpasses.txt" ) ) )
+						break;
+					
 					string[] Emails = System.IO.File.ReadAllLines(Environment.ExpandEnvironmentVariables(@"%localappdata%\Ninjabot\accemails.txt"));
 					string[] Passwords = System.IO.File.ReadAllLines(Environment.ExpandEnvironmentVariables(@"%localappdata%\Ninjabot\accpasses.txt"));
 
@@ -157,6 +163,9 @@ namespace RYPbin
 					}
 					break;
 				case SearchMethod.NinjaBot2:
+					if( !System.IO.File.Exists( Environment.ExpandEnvironmentVariables( @"%localappdata%\Ninjabot\accpasses.txt" ) ) )
+						break;
+
 					Acc = System.IO.File.ReadAllLines(Environment.ExpandEnvironmentVariables(@"%localappdata%\Ninjabot2.0\remember.dat"));
 
 					ret.Add(new Account(Acc[1], Acc[2], s, @"%localappdata%\Ninjabot2.0\remember.dat"));
